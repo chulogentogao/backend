@@ -31,9 +31,15 @@ Route::middleware(['auth:web', 'throttle:api'])->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::put('/user/password', [AuthController::class, 'changePassword']);
 
-    // Normal user routes
+    // Items routes - accessible to all authenticated users
+    Route::get('/items', [ItemController::class, 'index']);
+    Route::get('/items/{id}', [ItemController::class, 'show']);
+    Route::post('/items', [ItemController::class, 'store']);
+    Route::put('/items/{id}', [ItemController::class, 'update']);
+    Route::delete('/items/{id}', [ItemController::class, 'destroy']);
+
+    // Normal user routes (legacy - keeping for backwards compatibility)
     Route::prefix('user')->group(function () {
-        // User can view items
         Route::get('/items', [ItemController::class, 'index']);
         Route::get('/items/{id}', [ItemController::class, 'show']);
     });

@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     {
         // Create admin user if it doesn't exist
         $admin = User::firstOrCreate(
-            ['email' => 'admin@inventory.com'],
+            ['email' => 'admin@gmail.com'],
             [
                 'name' => 'Admin User',
                 'password' => Hash::make('admin123'),
@@ -29,7 +29,7 @@ class AdminSeeder extends Seeder
         }
 
         $this->command->info('Admin user created successfully!');
-        $this->command->info('Email: admin@inventory.com');
+        $this->command->info('Email: admin@gmail.com');
         $this->command->info('Password: admin123');
     }
 }
